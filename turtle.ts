@@ -1,7 +1,7 @@
 enum TurtlePenMode {
-    //% block="down"
+    //% block="baissé"
     Down,
-    //% block="up"
+    //% block="levé"
     Up
 }
 /**
@@ -49,7 +49,7 @@ namespace turtle {
      * Moves the turtle for the given amount of pixels
      * @param steps number of steps, eg: 1
      */
-    //% blockId=turtleForward block="forward %steps|steps"
+    //% blockId=turtleForward block="avance %steps|steps"
     //% weight=99 blockGap=8
     export function forward(steps: number): void {
         init();
@@ -72,7 +72,7 @@ namespace turtle {
      * Moves back by the given number of steps
      * @param steps number of steps to move, eg: 1
      */
-    //% blockId=turtleBack block="back %steps|steps"
+    //% blockId=turtleBack block="recule %steps|steps"
     //% weight=98 blockGap=8
     export function back(steps: number): void {
         forward(-steps);
@@ -86,7 +86,7 @@ namespace turtle {
     /**
      * Turns left by 90 degrees
      */
-    //% blockId=turtleTurnLeft block="turn left"
+    //% blockId=turtleTurnLeft block="tourne à gauche"
     //% weight=89 blockGap=8
     export function turnLeft(): void {
         turn(-1);
@@ -95,7 +95,7 @@ namespace turtle {
     /**
      * Turns right by 90 degrees
      */
-    //% blockId=turtleTurnRight block="turn right"
+    //% blockId=turtleTurnRight block="tourne à droite"
     //% weight=88 blockGap=8
     export function turnRight(): void {
         turn(1);
@@ -109,7 +109,7 @@ namespace turtle {
      */
     //% x.min=0 x.max=4
     //% y.min=0 y.max=4
-    //% blockId=turtleSetPosition block="set position x: %x|y: %y"
+    //% blockId=turtleSetPosition block="position x: %x|y: %y"
     //% weight=87
     export function setPosition(x: number, y: number): void {
         init();
@@ -122,7 +122,7 @@ namespace turtle {
      * Puts the pen down or up
      */
     //% blockGap=8
-    //% blockId=turtlePen block="pen %mode"
+    //% blockId=turtlePen block="crayon %mode"
     //% weight=65
     export function pen(mode: TurtlePenMode): void {
         init();
@@ -134,7 +134,7 @@ namespace turtle {
      * Moves the turtle to the center of the screen 
      */
     //% blockGap=8
-    //% blockId=turtleHome block="home"
+    //% blockId=turtleHome block="init"
     export function home(): void {
         setPosition(2, 2);
         _direction = 3;
@@ -146,7 +146,7 @@ namespace turtle {
      */
     //% blockGap=8
     //% brightness.min=0 brightness.max=255
-    //% blockId=turtleSetBrightness block="set brightess %brightness"
+    //% blockId=turtleSetBrightness block="luminosité %brightness"
     export function setBrightness(brightness: number): void {
         init();
         _brightness = Math.max(0, Math.min(255, brightness));
@@ -158,13 +158,14 @@ namespace turtle {
      * @param stepsPerSecond steps per second, eg: 25
      */
     //% blockGap=8
-    //% blockId=turtleSetSpeed block="set speed %speed"
+    //% blockId=turtleSetSpeed block="vitesse %speed"
     //% stepsPerSecond.min=1 stepsPerSecond.max=50
     //% weight=10
     export function setSpeed(stepsPerSecond: number): void {
         if (stepsPerSecond <= 0) return;
 
-        _delay = Math.max(1, Math.min(50, Math.idiv(1000, stepsPerSecond)));
+        
+        _delay = Math.max(1, Math.max(20, Math.idiv(1000, stepsPerSecond) ) );
     }
 
     // auto-initialize
