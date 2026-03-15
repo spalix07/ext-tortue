@@ -134,7 +134,7 @@ namespace tortue {
      * Effacer crayon
      */
     //% blockGap=8
-    //% blockId=turtlePen block="effacer crayon"
+    //% blockId=turtleClearPen block="effacer crayon"
     //% weight=60
     export function clear_pen(): void {
         _img = images.createImage(`
