@@ -7,7 +7,7 @@ enum TurtlePenMode {
 /**
  * Turtle graphics blocks
  */
-//% weight=100 color=#0f9c11 icon="\uf188"
+//% weight=100 color=#09620B icon="\uf188"
 namespace tortue {
     let _x: number;
     let _y: number;
@@ -37,12 +37,12 @@ namespace tortue {
     }
 
     function paint() {
+        // slow down
+        basic.pause(_delay);
         // plot background
         _img.plotImage();
         // plot turtle
         led.plotBrightness(_x, _y, 255);
-        // slow down
-        basic.pause(_delay);
     }
 
     /**
@@ -130,6 +130,27 @@ namespace tortue {
         paint();
     }
 
+    /**
+     * Effacer traces
+     */
+    //% blockGap=8
+    //% blockId=turtlePen block="effacer traces"
+    //% weight=60
+    export function pen(mode: TurtlePenMode): void {
+        _img = images.createImage(`
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            . . . . .
+            `)
+        basic.clearScreen();
+        // plot turtle
+        led.plotBrightness(_x, _y, 255);
+
+    }
+
+    
     /**
      * Moves the turtle to the center of the screen 
      */
