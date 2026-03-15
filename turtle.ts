@@ -136,7 +136,7 @@ namespace tortue {
     //% blockGap=8
     //% blockId=turtlePen block="effacer traces"
     //% weight=60
-    export function pen(mode: TurtlePenMode): void {
+    export function pen(): void {
         _img = images.createImage(`
             . . . . .
             . . . . .
